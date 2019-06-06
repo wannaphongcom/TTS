@@ -9,24 +9,22 @@ through Unidecode. For other data, you can modify _characters. See TRAINING_DATA
 _pad = '_'
 _eos = '~'
 _bos = '^'
-_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? '
-_punctuations = '!\'(),-.:;? '
+_characters = "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮ(),-.:;? "
+_punctuations = "ฤฦะ\u0e31าำ\u0e34\u0e35\u0e36\u0e37\u0e38\u0e39เแโใไ\u0e45\u0e47 "
 _phoneme_punctuations = '.!;:,?'
 
 # Phonemes definition
 _vowels = 'iyɨʉɯuɪʏʊeøɘəɵɤoɛœɜɞʌɔæɐaɶɑɒᵻ'
-_non_pulmonic_consonants = 'ʘɓǀɗǃʄǂɠǁʛ'
-_pulmonic_consonants = 'pbtdʈɖcɟkɡqɢʔɴŋɲɳnɱmʙrʀⱱɾɽɸβfvθðszʃʒʂʐçʝxɣχʁħʕhɦɬɮʋɹɻjɰlɭʎʟ'
-_suprasegmentals = 'ˈˌːˑ'
-_other_symbols = 'ʍwɥʜʢʡɕʑɺɧ '
-_diacrilics = 'ɚ˞ɫ'
-_phonemes = sorted(list(_vowels + _non_pulmonic_consonants + _pulmonic_consonants + _suprasegmentals + _other_symbols + _diacrilics))
+_tonemarks = "\u0e48\u0e49\u0e4a\u0e4b"
+_signs = "ฯๆ\u0e3a\u0e4c\u0e4d\u0e4e"
+_digits = "๐๑๒๓๔๕๖๗๘๙"
+_phonemes = sorted(list(_vowels +_tonemarks+_signs))
 
 # Prepend "@" to ARPAbet symbols to ensure uniqueness (some are the same as uppercase letters):
-_arpabet = ['@' + s for s in _phonemes]
+_arpabet = _phonemes#['@' + s for s in _phonemes]
 
 # Export all symbols:
-symbols = [_pad, _eos, _bos] + list(_characters) + _arpabet
+symbols = [_pad, _eos, _bos] + list(_characters)+list(_digits) + _arpabet
 phonemes = [_pad, _eos, _bos] + list(_phonemes) + list(_punctuations)
 
 # Generate ALIEN language
